@@ -8,36 +8,51 @@ function drawSplash()
 end
 
 function mainScreen()
+	--Background
 	love.graphics.setColor(0.992,0.647,0.831)
 	love.graphics.rectangle("fill",0,0,128,128);
-	for i=1, 8 do
-		for j=1, 8 do
+	--THE Canvas
+	for i=1, 32/zoomLevel do
+		for j=1, 32/zoomLevel do
 			love.graphics.setColor(canvasBuff[i][j][1], canvasBuff[i][j][2], canvasBuff[i][j][3])
-			love.graphics.rectangle("fill",32 + (j-1)*8, 25 + (i-1)*8, 8, 8)
-			love.graphics.rectangle("fill",127-1-8+j, 0+i, 1, 1)
+			love.graphics.rectangle("fill",4 + (j-1)*zoomLevel*2, 25 + (i-1)*zoomLevel*2, 2*zoomLevel, 2*zoomLevel)
+			--Small preview
+			--love.graphics.rectangle("fill",127-1-8+j, 0+i, 1, 1)
 		end
 	end
 	
+	--Palettes
 	for i=1, 8 do
 		love.graphics.setColor(palettes[i][1], palettes[i][2], palettes[i][3])
 		love.graphics.rectangle("fill",0 + (i-1)*16, 128-16, 16,16)
 	end
 
+	--Cursor
 	love.graphics.setColor(palettes[activePalette][1], palettes[activePalette][2], palettes[activePalette][3])
-	love.graphics.rectangle("fill", 32 + cursor.x*8, 25 + cursor.y*8, 8, 8)
+	love.graphics.rectangle("fill", 4 + cursor.x*zoomLevel*2, 25 + cursor.y*zoomLevel*2, 2*zoomLevel, 2*zoomLevel)
 
-	love.graphics.setColor(1-canvasBuff[cursor.y+1][cursor.x+1][1], 1-canvasBuff[cursor.y+1][cursor.x+1][2], 1-canvasBuff[cursor.y+1][cursor.x+1][3])
-	drawLineRect(32+cursor.x*8,25+cursor.y*8,8,8)
+	--Cursor Border
+	--love.graphics.setColor(1-canvasBuff[cursor.y+1][cursor.x+1][1], 1-canvasBuff[cursor.y+1][cursor.x+1][2], 1-canvasBuff[cursor.y+1][cursor.x+1][3])
+	--drawLineRect(4+cursor.x*8,25+cursor.y*8,8,8)
 
+	--Canvas's border
 	love.graphics.setColor(0.996,0.823,0.949)
-	drawLineRect(31,24,66,66)
+	drawLineRect(3,24,66,66)
 
+	--Palette's cursor border
 	drawLineRect((activePalette-1)*16, 128-16, 16, 16)
+	
+	--ZoomLevel
+	love.graphics.setColor(1,1,1)
+	love.graphics.rectangle("fill", 80, 48, 32, 1)
+	drawString(tostring(zoomLevel).."x",1, "3", 88, 32, 2)
 end
 
 function colorSelector()
+	--Background
 	love.graphics.setColor(0,0,0)
 	love.graphics.rectangle("fill",0,0,128,128)
+
 	love.graphics.setColor(palettes[activePalette][1], palettes[activePalette][2], palettes[activePalette][3])
 	love.graphics.rectangle("fill", 8,34,32,32)
 	love.graphics.setColor(1,1,1)
@@ -85,3 +100,5 @@ function colorSelector()
 	love.graphics.rectangle("fill", 80, 90,32,1) 
 	love.graphics.rectangle("fill", 80+math.floor(palettes[activePalette][3]*32), 89,1,1)
 end
+
+	

@@ -10,9 +10,9 @@ function love.load()
 	scaleCoeff = height/128
 	paddingCoeff=(width - (128 * scaleCoeff))/2
 	canvasBuff={}
-	for i=1, 8 do
+	for i=1, 32 do
 		canvasBuff[i]={}
-		for j=1, 8 do
+		for j=1, 32 do
 			canvasBuff[i][j] = {}
 			for k=1, 3 do
 				canvasBuff[i][j][k]=0.7
@@ -49,6 +49,7 @@ function love.load()
 	delaySetPoint=2
 	timerBool = true
 	rgbSelect = 1
+	zoomLevel = 1
 end
 
 function love.update(dt)

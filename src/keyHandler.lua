@@ -20,7 +20,7 @@ function love.keypressed(key)
 		end
 		
 		if key=="j" then
-			if cursor.y < 7 then
+			if cursor.y < (32/zoomLevel) - 1 then
 				cursor.y = cursor.y + 1
 			end
 		end
@@ -30,7 +30,7 @@ function love.keypressed(key)
 			end
 		end
 		if key=="l" then
-			if cursor.x < 7  then
+			if cursor.x < (32/zoomLevel) - 1  then
 				cursor.x = cursor.x + 1
 			end
 		end
@@ -59,6 +59,7 @@ function love.keypressed(key)
 			else palettes[activePalette][rgbSelect] = 1
 			end
 		end
+		
 	end
 
 	if key=="1" then if keyModShift then activePalette=1 end end
@@ -85,6 +86,16 @@ function love.keypressed(key)
 	if key=="tab" then
 		if screen=="main" then screen="color"
 		elseif screen=="color" then screen="main" 
+		end
+	end
+	if key=="p" then
+		if zoomLevel ~= 8 then
+			zoomLevel = zoomLevel *2
+		end
+	end
+	if key=="o" then
+		if zoomLevel ~= 1 then
+			zoomLevel = zoomLevel / 2
 		end
 	end
 	
