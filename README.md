@@ -9,7 +9,7 @@ Runable binary and .love doesn't available (yet).
 To run, just execute run.bat (untested) or run.sh.
 
 # Features
-* 8x8 pixel resolution (more to come ;))
+* 32x32 pixel default canvas size (more to come ;))
 * RGB palette selector
 * Export to PNG
 * No mouse required
@@ -20,6 +20,7 @@ The key can not be changed to your preference for now.
 Here is the list of keys for operation.
 
 * h,j,k,l	-> moves left, down, up, right respectively
+* o,p		-> zoom down, up respectively
 * d,f		-> change color bacward and forward
 * shift + num 	-> change color according to number
 * w		-> saves file to "~/vixel/" or "My Documents/vixel/" depends on OS
